@@ -6,7 +6,8 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/app';
 import reducers from './reducers';
 
-import { Router, Route, browserHistory, indexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import PostsIndex from './components/posts_index';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
@@ -18,6 +19,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router history={browserHistory}>
         <Route path="/" component={App}>
+            <IndexRoute component={PostsIndex}/>
             <Route path="greet" component={Greeting} />
         </Route>
     </Router>
