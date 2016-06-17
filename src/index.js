@@ -8,19 +8,19 @@ import reducers from './reducers';
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import PostsIndex from './components/posts_index';
+import promise from 'redux-promise';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(
+    promise
+)(createStore);
 
-const Greeting = () => {
-  return <div>  Hey there</div>;
-};
+
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={PostsIndex}/>
-            <Route path="greet" component={Greeting} />
         </Route>
     </Router>
   </Provider>
